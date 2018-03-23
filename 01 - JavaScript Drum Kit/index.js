@@ -5,3 +5,9 @@ window.addEventListener('keydown', (e) => {
   keyEl.classList.add('playing');
   audioEl.play();
 });
+
+window.addEventListener('keyup', (e) => {
+  let key = e.keyCode;
+  let keyEl = document.querySelector(`div[data-key='${key}']`);
+  keyEl.classList.remove('playing');
+});
