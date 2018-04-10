@@ -22,12 +22,18 @@ const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick
 
 // Array.prototype.filter()
 // 1. Filter the list of inventors for those who were born in the 1500's
+const filtered1500 = inventors.filter(element => element.year >= 1500 && element.year < 1600);
+console.table(filtered1500);
 
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
+const firstLast = inventors.map(person => `${person.first} ${person.last}`);
+console.table(firstLast);
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birthdate, oldest to youngest
+const oldYoung = inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year));
+console.table(oldYoung);
 
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
