@@ -9,6 +9,10 @@ fetch(endpoint)
   .then(res => res.json())
   .then(data => cities.push(...data))
 
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
 const findMatches = (wordToMatch, cities) => {
   return cities.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi')
@@ -26,7 +30,7 @@ const displayMatches = () => {
     return `
       <li>
         <span class="name">${cityName}, ${stateName}</span>
-        <span class="population">${place.population}</span>
+        <span class="population">${numberWithCommas(place.population)}</span>
       </li>
     `
   }).join('')
