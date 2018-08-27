@@ -20,9 +20,12 @@ const displayMatches = () => {
   const value = searchQuery.value
   const matchArray = findMatches(value, cities)
   const html = matchArray.map(place => {
+    const regexHighlight = new RegExp(value, 'gi')
+    const cityName = place.city.replace(regexHighlight, `<span class="hl">${value}</span>`)
+    const stateName = place.state.replace(regexHighlight, `<span class="hl">${value}</span>`)
     return `
       <li>
-        <span class="name">${place.city}, ${place.state}</span>
+        <span class="name">${cityName}, ${stateName}</span>
         <span class="population">${place.population}</span>
       </li>
     `
